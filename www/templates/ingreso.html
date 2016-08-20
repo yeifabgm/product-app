@@ -4,13 +4,13 @@
             <div class="spacer" style="height: 100px;"></div>
             <label class="item item-input " id="ingreso-input1">
                 <span class="input-label">e mail</span>
-                <input type="text" placeholder="">
+                <input type="text" placeholder=""  ng-model="email">
             </label>
             <label class="item item-input " id="ingreso-input3">
                 <span class="input-label">Passport</span>
-                <input type="text" placeholder="">
+                <input type="text" placeholder=""  ng-model="password">
             </label>
         </form>
-        <button id="ingreso-button3" class=" button button-positive  button-block ">Tap me!</button>
+        <button id="ingreso-button3" class=" button button-positive  button-block " ng-click="login()">Ingresar</button>
     </ion-content>
 </ion-view>
