@@ -7,7 +7,18 @@ angular.module('app.services', ['ngResource'])
 
    this.item_create = $resource('http://private-bcbaa-productapp.apiary-mock.com/products/create');
 
-   this.user_create = $resource('http://private-bcbaa-productapp.apiary-mock.com/user/sign-up');
+   this.user_create = $resource('http://private-bcbaa-productapp.apiary-mock.com/user/sign-up', {},{
+   	save:{
+   		method:'POST',
+   		interceptor:{
+   			response:function(response){
+   			var result= response.resource;
+   			result.$status =response.status;
+   			return result;
+   			}
+   		}
+   	}
+   });
 
    this.user_login = $resource('http://private-bcbaa-productapp.apiary-mock.com/user/sign-in/1');
 
