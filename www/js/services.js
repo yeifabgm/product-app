@@ -7,9 +7,9 @@ angular.module('app.services', ['ngResource'])
 
    this.item_create = $resource('http://private-bcbaa-productapp.apiary-mock.com/products/create');
 
-   this.user_create = $resource('http://polls.apiblueprint.org/user/sign-up');
+   this.user_create = $resource('http://private-bcbaa-productapp.apiary-mock.com/user/sign-up');
 
-   this.user_login = $resource('http://polls.apiblueprint.org/user/sign-in');
+   this.user_login = $resource('http://private-bcbaa-productapp.apiary-mock.com/user/sign-in/1');
 
 
 }]);

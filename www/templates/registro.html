@@ -25,7 +25,7 @@
             </label>
             <label class="item item-input " id="registro-input8">
                 <span class="input-label">Telefono</span>
-                <input type="text" placeholder="" ng-model="phone" length="10" required>
+                <input type="number" placeholder="" ng-model="phone" length="10" required>
                 <span style="color:#ff2a25" ng-show="studentForm.age.$dirty && studentForm.age.$invalid">
                       <span ng-show="studentForm.age.$error.required">Phone is required.</span>
                       <span ng-show="studentForm.age.$error.number">Invalid number.</span>
@@ -33,7 +33,7 @@
             </label>
             <label class="item item-input " id="registro-input9">
                 <span class="input-label">Password</span>
-                <input type="text" placeholder="" ng-model="pass" length="2" required>
+                <input type="password" placeholder="" ng-model="pass" length="2" required>
                 <span style="color:#ff2a25" ng-show="studentForm.age.$dirty && studentForm.age.$invalid">
                   <span ng-show="studentForm.age.$error.required">Password is required.</span>
                </span>
