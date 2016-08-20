@@ -5,15 +5,15 @@
                 <span class="input-label">E mail</span>
                 <input name='email' type="email" placeholder="" ng-model="email" length="100" required>
                 <span style="color:#ff2a25" ng-show="studentForm.email.$dirty && studentForm.email.$invalid">
-                <span ng-show="studentForm.email.$error.required">Email is required.</span>
-                <span ng-show="studentForm.email.$error.email">Invalid email address.</span>
-   </span>
+                    <span ng-show="studentForm.email.$error.required">Email is required.</span>
+                    <span ng-show="studentForm.email.$error.email">Invalid email address.</span>
+                </span>
             </label>
             <label class="item item-input " id="registro-input5">
                 <span class="input-label">Nombre</span>
                 <input type="text" placeholder="" ng-model="firstName" required>
                 <span style="color:#ff2a25" ng-show="studentForm.firstname.$dirty && studentForm.firstname.$invalid">
-                <span ng-show="studentForm.firstname.$error.required">First Name is required.</span>
+                    <span ng-show="studentForm.firstname.$error.required">First Name is required.</span>
                 </span>
             </label>
             <label class="item item-input " id="registro-input7">
@@ -27,8 +27,8 @@
                 <span class="input-label">Telefono</span>
                 <input type="number" placeholder="" ng-model="phone" length="10" required>
                 <span style="color:#ff2a25" ng-show="studentForm.age.$dirty && studentForm.age.$invalid">
-                      <span ng-show="studentForm.age.$error.required">Phone is required.</span>
-                      <span ng-show="studentForm.age.$error.number">Invalid number.</span>
+                    <span ng-show="studentForm.age.$error.required">Phone is required.</span>
+                    <span ng-show="studentForm.age.$error.number">Invalid number.</span>
                 </span>
             </label>
             <label class="item item-input " id="registro-input9">

@@ -10,34 +10,26 @@ angular.module('app.routes', [])
     
   
 
-      .state('menu.home', {
+  .state('menu.home', {
     url: '/page1',
     views: {
       'side-menu21': {
-        templateUrl: 'templates/home.html',
-        controller: 'homeCtrl'
+        templateUrl: 'templates/product.html',
+        controller: 'productCtrl'
       }
     }
   })
 
-  .state('menu.ingreso', {
+  .state('ingreso', {
     url: '/page2',
-    views: {
-      'side-menu21': {
-        templateUrl: 'templates/ingreso.html',
-        controller: 'ingresoCtrl'
-      }
-    }
+    templateUrl: 'templates/ingreso.html',
+    controller: 'ingresoCtrl'
   })
 
-  .state('menu.registro', {
+  .state('registro', {
     url: '/page3',
-    views: {
-      'side-menu21': {
-        templateUrl: 'templates/registro.html',
-        controller: 'registroCtrl'
-      }
-    }
+    templateUrl: 'templates/registro.html',
+    controller: 'registroCtrl'
   })
 
   .state('page', {
@@ -46,10 +38,14 @@ angular.module('app.routes', [])
     controller: 'pageCtrl'
   })
 
-    .state('products', {
+  .state('menu.products', {
     url: '/products',
-    templateUrl: 'templates/product.html',
-    controller: 'productCtrl'
+    views: {
+      'side-menu21': {
+        templateUrl: 'templates/product.html',
+        controller: 'productCtrl'
+      }
+    }
   })
 
   .state('menu', {

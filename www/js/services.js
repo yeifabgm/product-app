@@ -20,7 +20,18 @@ angular.module('app.services', ['ngResource'])
    	}
    });
 
-   this.user_login = $resource('http://private-bcbaa-productapp.apiary-mock.com/user/sign-in/1');
+   this.user_login = $resource('http://private-bcbaa-productapp.apiary-mock.com/user/sign-in/1', {},{
+   	login:{
+   		method:'POST',
+   		interceptor:{
+   			response:function(response){
+   			var result= response.resource;
+   			result.$status =response.status;
+   			return result;
+   			}
+   		}
+   	}
+   });
 
 this.product_list = $resource('http://private-bcbaa-productapp.apiary-mock.com/products/list');
 }]);
