@@ -1,9 +1,15 @@
-angular.module('app.services', [])
+angular.module('app.services', ['ngResource'])
 
-.factory('BlankFactory', [function(){
+.service('productService', ['$resource', function($resource){
+   this.item_list = $resource('http://private-bcbaa-productapp.apiary-mock.com/products/list');
 
-}])
+   this.item_detail = $resource('http://private-bcbaa-productapp.apiary-mock.com/products/detail/:id');
 
-.service('BlankService', [function(){
+   this.item_create = $resource('http://private-bcbaa-productapp.apiary-mock.com/products/create');
+
+   this.user_create = $resource('http://polls.apiblueprint.org/user/sign-up');
+
+   this.user_login = $resource('http://polls.apiblueprint.org/user/sign-in');
+
 
 }]);
