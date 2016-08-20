@@ -40,6 +40,18 @@ angular.module('app.routes', [])
     }
   })
 
+  .state('page', {
+    url: '/page1',
+    templateUrl: 'templates/page.html',
+    controller: 'pageCtrl'
+  })
+
+    .state('products', {
+    url: '/products',
+    templateUrl: 'templates/product.html',
+    controller: 'productCtrl'
+  })
+
   .state('menu', {
     url: '/side-menu21',
     templateUrl: 'templates/menu.html',

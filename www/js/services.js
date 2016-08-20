@@ -11,5 +11,5 @@ angular.module('app.services', ['ngResource'])
 
    this.user_login = $resource('http://private-bcbaa-productapp.apiary-mock.com/user/sign-in/1');
 
-
+this.product_list = $resource('http://private-bcbaa-productapp.apiary-mock.com/products/list');
 }]);
