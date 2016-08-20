@@ -48,11 +48,29 @@ angular.module('app.routes', [])
     }
   })
 
+
+  .state('forgot-password', {
+    url: '/page4', 
+    templateUrl: 'templates/cambiarPassword.html',
+    controller: 'cambiarPasswordCtrl'
+      
+  })
+
+  .state('options', {
+    url: '/options', 
+    templateUrl: 'templates/options.html',
+    controller: 'optionsCtrl'
+      
+  })
+
   .state('menu', {
     url: '/side-menu21',
     templateUrl: 'templates/menu.html',
     abstract:true
   })
+
+
+
 
 $urlRouterProvider.otherwise('/side-menu21/page1')
 

@@ -5,7 +5,18 @@ angular.module('app.services', ['ngResource'])
 
    this.item_detail = $resource('http://private-bcbaa-productapp.apiary-mock.com/products/detail/:id');
 
-   this.item_create = $resource('http://private-bcbaa-productapp.apiary-mock.com/products/create');
+   this.item_create = $resource('http://private-bcbaa-productapp.apiary-mock.com/products/create', {},{
+      save:{
+         method:'POST',
+         interceptor:{
+            response:function(response){
+            var result= response.resource;
+            result.$status =response.status;
+            return result;
+            }
+         }
+      }
+   });
 
    this.user_create = $resource('http://private-bcbaa-productapp.apiary-mock.com/user/sign-up', {},{
    	save:{
@@ -33,5 +44,20 @@ angular.module('app.services', ['ngResource'])
    	}
    });
 
-this.product_list = $resource('http://private-bcbaa-productapp.apiary-mock.com/products/list');
+   this.product_list = $resource('http://private-bcbaa-productapp.apiary-mock.com/products/list');
+
+
+   this.forgot_password = $resource('http://private-bcbaa-productapp.apiary-mock.com/user/forgot-password/:id',{id: '@id'},{
+      update: { //nombre del metodo a utilizar
+        method: 'PUT',
+        interceptor:{
+            response:function(response){
+            var result= response.resource;
+            result.$status =response.status;
+            return result;
+            }
+         }
+      }
+   });
+
 }]);
