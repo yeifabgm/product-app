@@ -8,10 +8,8 @@ angular.module('app.routes', [])
   // Each state's controller can be found in controllers.js
   $stateProvider
     
-  
-
   .state('menu.home', {
-    url: '/page1',
+    url: '/home',
     views: {
       'side-menu21': {
         templateUrl: 'templates/product.html',
@@ -38,17 +36,6 @@ angular.module('app.routes', [])
     controller: 'pageCtrl'
   })
 
-  .state('menu.products', {
-    url: '/products',
-    views: {
-      'side-menu21': {
-        templateUrl: 'templates/product.html',
-        controller: 'productCtrl'
-      }
-    }
-  })
-
-
   .state('forgot-password', {
     url: '/page4', 
     templateUrl: 'templates/cambiarPassword.html',
@@ -60,7 +47,12 @@ angular.module('app.routes', [])
     url: '/options', 
     templateUrl: 'templates/options.html',
     controller: 'optionsCtrl'
-      
+  })
+
+  .state('logout', {
+    url: '/logout',
+    templateUrl: 'templates/loguot.html',
+    controller: 'logoutCtrl'
   })
 
   .state('menu', {
@@ -70,10 +62,6 @@ angular.module('app.routes', [])
   })
 
 
-
-
-$urlRouterProvider.otherwise('/side-menu21/page1')
-
-  
+$urlRouterProvider.otherwise('/side-menu21/home')
 
 });

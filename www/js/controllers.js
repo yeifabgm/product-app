@@ -1,12 +1,4 @@
 angular.module('app.controllers', ['app.services', 'ngCordova'])
-  
-.controller('homeCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams) {
-
-
-}])
    
 .controller('ingresoCtrl', ['$scope', '$stateParams','productService', '$state', '$cordovaDialogs', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
@@ -64,6 +56,11 @@ function ($scope, $stateParams, productService, $cordovaDialogs) {
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 function ($scope, $stateParams, productService, $state) {
+	$scope.logout = function(){
+		console.log("sdfasdf");
+		$state.go('logout');
+	}
+
 	if (localStorage.getItem('cookie') == null) {
 		console.log('No hay localStorage');
 		$state.go('ingreso');
@@ -128,9 +125,20 @@ function ($scope, $stateParams, productService, $cordovaDialogs) {
 }])
 
 
-.controller('optionsCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('optionsCtrl', ['$scope', '$stateParams', '$state', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams) {
+function ($scope, $stateParams, $state) {
+	if (localStorage.getItem('cookie') != null) {
+		console.log('No hay localStorage');
+		$state.go('menu.home');
+	}
+}])
+
+.controller('logoutCtrl', ['$scope', '$stateParams', '$state', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+// You can include any angular dependencies as parameters for this function
+// TIP: Access Route Parameters for your page via $stateParams.parameterName
+function ($scope, $stateParams, $state) {
     localStorage.clear();
+    $state.go('options');
 }])

@@ -24,9 +24,6 @@
     "cordova-plugin-dialogs"
   ],
   "cordovaPlatforms": [
-    {
-      "platform": "android",
-      "locator": "browser"
-    }
+    "android"
   ]
 }
