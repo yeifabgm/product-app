@@ -13,24 +13,24 @@ function ($scope, $stateParams) {
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 function ($scope, $stateParams) {
 
-  $scope.login = function(){
-
-    var data = {
-      ''
-    };
-    productService.user_login.post(data,function (data){
-
-
-    })
-  }
-
+  
 }])
    
-.controller('registroCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('registroCtrl', ['$scope', '$stateParams', 'productService', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams) {
-
-
+function ($scope, $stateParams, productService) {
+	$scope.registro = function(){
+		var data = {
+			'email': $scope.email,
+			'firstname': $scope.firstName,
+			'lastname': $scope.lastName,
+			'phone': $scope.phone,
+			'pass': $scope.pass
+		};
+		productService.user_create.post(data,function(data){
+			consol.log(data);
+		});
+	}
 }])
     

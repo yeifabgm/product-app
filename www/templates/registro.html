@@ -3,25 +3,42 @@
         <form id="registro-form3" class="list ">
             <label class="item item-input " id="registro-input4">
                 <span class="input-label">E mail</span>
-                <input type="text" placeholder="">
+                <input name='email' type="email" placeholder="" ng-model="email" length="100" required>
+                <span style="color:#ff2a25" ng-show="studentForm.email.$dirty && studentForm.email.$invalid">
+                <span ng-show="studentForm.email.$error.required">Email is required.</span>
+                <span ng-show="studentForm.email.$error.email">Invalid email address.</span>
+   </span>
             </label>
             <label class="item item-input " id="registro-input5">
                 <span class="input-label">Nombre</span>
-                <input type="text" placeholder="">
+                <input type="text" placeholder="" ng-model="firstName" required>
+                <span style="color:#ff2a25" ng-show="studentForm.firstname.$dirty && studentForm.firstname.$invalid">
+                <span ng-show="studentForm.firstname.$error.required">First Name is required.</span>
+                </span>
             </label>
             <label class="item item-input " id="registro-input7">
                 <span class="input-label">Apellidos</span>
-                <input type="text" placeholder="">
+                <input type="text" placeholder="" ng-model="lastName" required>
+                <span style="color:#ff2a25" ng-show="studentForm.lastname.$dirty && studentForm.lastname.$invalid">
+                  <span ng-show="studentForm.lastname.$error.required">Last Name is required.</span>
+               </span>
             </label>
             <label class="item item-input " id="registro-input8">
                 <span class="input-label">Telefono</span>
-                <input type="text" placeholder="">
+                <input type="text" placeholder="" ng-model="phone" length="10" required>
+                <span style="color:#ff2a25" ng-show="studentForm.age.$dirty && studentForm.age.$invalid">
+                      <span ng-show="studentForm.age.$error.required">Phone is required.</span>
+                      <span ng-show="studentForm.age.$error.number">Invalid number.</span>
+                </span>
             </label>
             <label class="item item-input " id="registro-input9">
                 <span class="input-label">Password</span>
-                <input type="text" placeholder="">
+                <input type="text" placeholder="" ng-model="pass" length="2" required>
+                <span style="color:#ff2a25" ng-show="studentForm.age.$dirty && studentForm.age.$invalid">
+                  <span ng-show="studentForm.age.$error.required">Password is required.</span>
+               </span>
             </label>
         </form>
-        <button id="registro-button4" class=" button button-positive  button-block ">Registro</button>
+        <button id="registro-button4" class=" button button-positive  button-block " ng-click = "registro()">Registro</button>
     </ion-content>
 </ion-view>
