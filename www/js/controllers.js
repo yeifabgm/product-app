@@ -31,19 +31,21 @@ function ($scope, $stateParams, productService, $state, $cordovaDialogs) {
 function ($scope, $stateParams, productService, $cordovaDialogs , $state) {
    $scope.registro = function(email, firstname, lastname, phone, pass){
       var data = {
-         'email': email,
-         'firstname': firstname,
-         'lastname': lastname,
-         'phone': phone,
-         'password': pass
+         "email": email,
+         "password": pass,
+         "firstname": firstname,
+         "lastname": lastname,
+         "phone": phone
       };
       console.log(data);
-      productService.user_create.save(data,function(data){
+      
+      productService.user_create.save(data ,function(data){
+         
          console.log("xxxx");
          if(data.$status == 201 || data.$status == 200){
             $cordovaDialogs.alert('Bienvenido ' + data.firstname , '¡Hola! ' + data.firstname , 'OK');
             localStorage.setItem('email', data.email);
-            $state.go('page');
+            $state.go('product');
          }else{
             $cordovaDialogs.alert('Algo salio mal ' + data.firstname , '¡Ups! ' + data.firstname , 'OK');
          }

@@ -5,7 +5,7 @@ angular.module('app.services', ['ngResource'])
 
    this.item_detail = $resource('http://138.68.0.83:7070/api/v1/product/detail/:id');
 
-   this.item_create = $resource('http://138.68.0.83:7070/api/v1/product/create', {},{
+   this.item_create = $resource('http://138.68.0.83:7070/api/v1/product/create', null,{
       save:{
          method:'POST',
          interceptor:{
@@ -31,7 +31,7 @@ angular.module('app.services', ['ngResource'])
       }
    });
 
-   this.user_create = $resource('http://138.68.0.83:7070/api/v1/user/sign-up', {},{
+   this.user_create = $resource('http://138.68.0.83:7070/api/v1/user/sign-up', null,{
    	save:{
    		method:'POST',
    		interceptor:{
@@ -44,7 +44,7 @@ angular.module('app.services', ['ngResource'])
    	}
    });
 
-   this.user_login = $resource('http://138.68.0.83:7070/api/v1/user/sign-in', {},{
+   this.user_login = $resource('http://138.68.0.83:7070/api/v1/user/sign-in', null,{
    	login:{
    		method:'POST',
    		interceptor:{
