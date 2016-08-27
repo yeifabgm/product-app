@@ -135,12 +135,28 @@ function ($scope, $stateParams, $state) {
 	}
 }])
 
-.controller('logoutCtrl', ['$scope', '$stateParams', '$state', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('logoutCtrl', ['$scope', '$stateParams', '$state', '$cordovaDialogs', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams, $state) {
-    localStorage.clear();
-    $state.go('options');
+function ($scope, $stateParams, $state, $cordovaDialogs) {
+
+  $cordovaDialogs.confirm('Confirmar Cerrar la Sesión', 'Cerrar Sesión', ['Aceptar','Cancelar'])
+    .then(function(buttonIndex) {
+
+        var btnIndex = buttonIndex;
+          console.log(btnIndex);
+        if(btnIndex == 1){ //Aceptar
+
+          localStorage.clear();
+          $state.go('options');
+          console.log("Cerro la Sesión");
+
+        }else{
+          $state.go('menu.home');
+        }
+        
+  });
+
 }])
 
 .controller('profileDetailCtrl', ['$scope', '$stateParams', 'productService', '$state',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
