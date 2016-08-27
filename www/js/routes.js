@@ -17,7 +17,15 @@ angular.module('app.routes', [])
       }
     }
   })
-
+  .state('menu.profiledetail', {
+    url: '/profile_detail',
+     views: {
+      'side-menu21': {
+        templateUrl: 'templates/profiledetail.html',
+        controller: 'profileDetailCtrl'
+      }
+    }  
+  })
   .state('ingreso', {
     url: '/page2',
     templateUrl: 'templates/ingreso.html',
