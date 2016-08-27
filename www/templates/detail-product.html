@@ -2,11 +2,11 @@
     <ion-content padding="true" class="has-header" ng-model="data_product">
 
         <ion-list id="edit-product">
-            <ion-item id="page-list-product-detail-1" >{{ id }}</ion-item>
-            <ion-item id="page-list-product-detail-2" >{{ name }}</ion-item>
-            <ion-item id="page-list-product-detail-3" >{{ type }}</ion-item>
-            <ion-item id="page-list-product-detail-4" >{{ quantity }}</ion-item>
-            <ion-item id="page-list-product-detail-4" >{{ price }}</ion-item>
+            <ion-item id="page-list-product-detail-1" >{{ data_product.id }}</ion-item>
+            <ion-item id="page-list-product-detail-2" >{{ data_product.name }}</ion-item>
+            <ion-item id="page-list-product-detail-3" >{{ data_product.type }}</ion-item>
+            <ion-item id="page-list-product-detail-4" >{{ data_product.quantity }}</ion-item>
+            <ion-item id="page-list-product-detail-4" >{{ data_product.price }}</ion-item>
         </ion-list>
 
     	<button class="button button-block button-positive" href="#/edit-product/" >Editar</button>
