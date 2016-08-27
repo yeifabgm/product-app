@@ -11,14 +11,14 @@
             </label>
             <label class="item item-input " id="registro-input5">
                 <span class="input-label">Nombre</span>
-                <input type="text" placeholder="" ng-model="firstName" required>
+                <input type="text" placeholder="" ng-model="firstname" required>
                 <span style="color:#ff2a25" ng-show="studentForm.firstname.$dirty && studentForm.firstname.$invalid">
                     <span ng-show="studentForm.firstname.$error.required">First Name is required.</span>
                 </span>
             </label>
             <label class="item item-input " id="registro-input7">
                 <span class="input-label">Apellidos</span>
-                <input type="text" placeholder="" ng-model="lastName" required>
+                <input type="text" placeholder="" ng-model="lastname" required>
                 <span style="color:#ff2a25" ng-show="studentForm.lastname.$dirty && studentForm.lastname.$invalid">
                   <span ng-show="studentForm.lastname.$error.required">Last Name is required.</span>
                </span>
@@ -39,6 +39,6 @@
                </span>
             </label>
         </form>
-        <button id="registro-button4" class=" button button-positive  button-block " ng-click = "registro()">Registro</button>
+        <button id="registro-button4" class=" button button-positive  button-block " ng-click = "registro(email, firstname, lastname, phone, pass)">Registro</button>
     </ion-content>
 </ion-view>

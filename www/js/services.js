@@ -18,6 +18,19 @@ angular.module('app.services', ['ngResource'])
       }
    });
 
+   this.updateDate = $resource('http://138.68.0.83:7070/api/v1/user/update/:email',{email: '@email'},{
+      save:{
+         method:'PUT',
+         interceptor:{
+            response:function(response){
+            var result= response.resource;
+            result.$status =response.status;
+            return result;
+            }
+         }
+      }
+   });
+
    this.user_create = $resource('http://138.68.0.83:7070/api/v1/user/sign-up', {},{
    	save:{
    		method:'POST',
@@ -48,6 +61,19 @@ angular.module('app.services', ['ngResource'])
    this.forgot_password = $resource('http://138.68.0.83:7070/api/v1/user/forgot-password/:email',{email: '@email'},{
       update: { //nombre del metodo a utilizar
         method: 'PUT',
+        interceptor:{
+            response:function(response){
+            var result= response.resource;
+            result.$status =response.status;
+            return result;
+            }
+         }
+      }
+   });
+
+   this.deleteData = $resource('http://138.68.0.83:7070/api/v1/user/delete/:email',{email: '@email'},{
+      delete: { //nombre del metodo a utilizar
+        method: 'DELETE',
         interceptor:{
             response:function(response){
             var result= response.resource;

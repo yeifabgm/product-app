@@ -25,24 +25,25 @@ function ($scope, $stateParams, productService, $state, $cordovaDialogs) {
 	}
 }])
    
-.controller('registroCtrl', ['$scope', '$stateParams', 'productService', '$cordovaDialogs',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('registroCtrl', ['$scope', '$stateParams', 'productService', '$cordovaDialogs','$state',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams, productService, $cordovaDialogs) {
-   $scope.registro = function(){
+function ($scope, $stateParams, productService, $cordovaDialogs , $state) {
+   $scope.registro = function(email, firstname, lastname, phone, pass){
       var data = {
-         'email': $scope.email,
-         'firstname': $scope.firstName,
-         'lastname': $scope.lastName,
-         'phone': $scope.phone,
-         'pass': $scope.pass
+         'email': email,
+         'firstname': firstname,
+         'lastname': lastname,
+         'phone': phone,
+         'password': pass
       };
+      console.log(data);
       productService.user_create.save(data,function(data){
-         console.log(data.$status);
+         console.log("xxxx");
          if(data.$status == 201 || data.$status == 200){
-
             $cordovaDialogs.alert('Bienvenido ' + data.firstname , '¡Hola! ' + data.firstname , 'OK');
             localStorage.setItem('email', data.email);
+            $state.go('page');
          }else{
             $cordovaDialogs.alert('Algo salio mal ' + data.firstname , '¡Ups! ' + data.firstname , 'OK');
          }
@@ -63,7 +64,7 @@ function ($scope, $stateParams, productService, $state) {
 
 	if (localStorage.getItem('cookie') == null) {
 		console.log('No hay localStorage');
-		$state.go('ingreso');
+		$state.go('options');
 	} else {
 		productService.item_list.query(function(data){
 			$scope.list = data;
@@ -196,12 +197,40 @@ function ($scope, $stateParams, productService, $state) {
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 function ($scope, $stateParams, productService, $cordovaDialogs) {
+  $scope.email = localStorage.getItem('email');
+
+  $scope.deleteData= function(){
+    console.log(localStorage.getItem('email'))
+      productService.deleteData.delete({'email':localStorage.getItem('email')},function(data){
+        console.log(data);
+      })
+   }
+
+  $scope.edit = function(firstName, lastName, phone){
+    var data = {
+         'firstname': firstName,
+         'lastname': lastName,
+         'phone': phone
+    };
+    console.log(data.firstName);
+        
+        productService.updateDate.save({'email': localStorage.getItem('email')}, data, function(data){
+         console.log(data.$status);
+        
+         if(data.$status == 201 || data.$status == 200){
+            $cordovaDialogs.alert('Nuevo nombre ' + data.firstname , 'Nuevo apellido ' + data.lastname , 'OK');
+         }else{
+            $cordovaDialogs.alert('Algo salio mal ' + data.firstname , '¡Ups! ' + data.firstname , 'OK');
+         }});
+  }
 }])
    
 .controller('changePasswordCtrl', ['$scope', '$stateParams', 'productService', '$cordovaDialogs', '$state',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 function ($scope, $stateParams, productService, $cordovaDialogs, $state) {
+
+
   $scope.change = function(newPass, newPass2){
       if(newPass === newPass2){
         $cordovaDialogs.alert('creado' , '¡Ups! ', 'Aceptar');
@@ -214,4 +243,5 @@ function ($scope, $stateParams, productService, $cordovaDialogs, $state) {
         $cordovaDialogs.alert('las contraseñas no coinciden' , '¡Ups! ', 'Aceptar');
       }
    }
+   /**/
 }])

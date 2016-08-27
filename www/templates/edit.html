@@ -1,22 +1,22 @@
 <ion-view title="Edit" id="page1">
     <ion-content padding="true" class="has-header">
         <ion-list id="edit-list1">
-            <ion-item id="edit-list-item1">Email</ion-item>
+            <ion-item id="edit-list-item1">{{ email }}</ion-item>
             <label class="item item-input" id="edit-input1">
                 <span class="input-label">Nombre</span>
-                <input type="text" placeholder="">
+                <input type="text" placeholder="" ngModel ="firstName">
             </label>
             <label class="item item-input" id="edit-input2">
                 <span class="input-label">Apellido</span>
-                <input type="text" placeholder="">
+                <input type="text" placeholder="" ngModel ="lastName">
             </label>
             <label class="item item-input" id="edit-input3">
                 <span class="input-label">Telefono</span>
-                <input type="number" placeholder="">
+                <input type="number" placeholder="" ngModel ="phone">
             </label>
         </ion-list>
-        <button id="edit-button1" class="button button-positive  button-block">Cambiar</button>
+        <button id="edit-button1" class="button button-positive  button-block" ng-click="edit(firstName, lastName, phone)" >Cambiar</button>
         <a ui-sref="changePassword" id="edit-button3" class="button button-positive button-small button-block">Cambiar Pasword</a>
-        <button id="edit-button2" class="button button-positive button-small button-block">Eliminar Perfil</button>
+        <button id="edit-button2" class="button button-positive button-small button-block"  ng-click="deleteData()" >Eliminar Perfil</button>
     </ion-content>
 </ion-view>
