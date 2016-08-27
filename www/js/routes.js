@@ -51,6 +51,12 @@ angular.module('app.routes', [])
       
   })
 
+  .state('detail-product', {
+    url: '/detail-product/:id', 
+    templateUrl: 'templates/detail-product.html',
+    controller: 'detailProductCtrl'
+  })
+
   .state('options', {
     url: '/options', 
     templateUrl: 'templates/options.html',
