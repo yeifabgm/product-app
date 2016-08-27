@@ -75,6 +75,18 @@ angular.module('app.routes', [])
     abstract:true
   })
 
+  .state('edit', {
+    url: '/edit',
+    templateUrl: 'templates/edit.html',
+    controller: 'editCtrl'
+  })
+
+  .state('changePassword', {
+    url: '/changePassword',
+    templateUrl: 'templates/changePassword.html',
+    controller: 'changePasswordCtrl'
+  })
+
 
 $urlRouterProvider.otherwise('/side-menu21/home')
 

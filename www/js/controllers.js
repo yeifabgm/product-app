@@ -191,3 +191,27 @@ function ($scope, $stateParams, productService, $state) {
         $scope.phone = localStorage.getItem('phone');
        // $scope.cookie=localStorage.setItem('cookie');
 }])  
+
+ .controller('editCtrl', ['$scope', '$stateParams', 'productService', '$cordovaDialogs',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+// You can include any angular dependencies as parameters for this function
+// TIP: Access Route Parameters for your page via $stateParams.parameterName
+function ($scope, $stateParams, productService, $cordovaDialogs) {
+}])
+   
+.controller('changePasswordCtrl', ['$scope', '$stateParams', 'productService', '$cordovaDialogs', '$state',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+// You can include any angular dependencies as parameters for this function
+// TIP: Access Route Parameters for your page via $stateParams.parameterName
+function ($scope, $stateParams, productService, $cordovaDialogs, $state) {
+  $scope.change = function(newPass, newPass2){
+      if(newPass === newPass2){
+        $cordovaDialogs.alert('creado' , '¡Ups! ', 'Aceptar');
+        productService.forgot_password.update({'email': localStorage.getItem('email')}, {"password":newPass},function(data){
+          console.log(data);
+        })
+        $state.go('edit');
+        
+      }else{
+        $cordovaDialogs.alert('las contraseñas no coinciden' , '¡Ups! ', 'Aceptar');
+      }
+   }
+}])
