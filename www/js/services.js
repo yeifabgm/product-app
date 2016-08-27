@@ -84,4 +84,17 @@ angular.module('app.services', ['ngResource'])
       }
    });
 
+   this.item_delete = $resource('http://138.68.0.83:7070/api/v1/product/delete/:id',{},{
+      delete: { //nombre del metodo a utilizar
+        method: 'DELETE',
+        interceptor:{
+            response:function(response){
+            var result= response.resource;
+            result.$status =response.status;
+            return result;
+            }
+         }
+      }
+   });
+
 }]);

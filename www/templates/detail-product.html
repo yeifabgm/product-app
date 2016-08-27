@@ -1,25 +1,16 @@
 <ion-view title="Detalle Producto" id="detail-product">
     <ion-content padding="true" class="has-header" ng-model="data_product">
 
-        <ion-list id="edit-list1">
-            <label class="item item-input" id="edit-input1">
-                <span class="input-label">Nombre: </span>
-                <span class="input-label">Nombre: </span>
-            </label>
-            <label class="item item-input" id="edit-input2">
-                <span class="input-label">Apellido</span>
-                <input type="text" placeholder="">
-            </label>
-            <label class="item item-input" id="edit-input3">
-                <span class="input-label">Telefono</span>
-                <input type="number" placeholder="">
-            </label>
-            <label class="item item-input" id="edit-input3">
-                <span class="input-label">Telefono</span>
-                <input type="number" placeholder="">
-            </label>
+        <ion-list id="edit-product">
+            <ion-item id="page-list-product-detail-1" >{{ id }}</ion-item>
+            <ion-item id="page-list-product-detail-2" >{{ name }}</ion-item>
+            <ion-item id="page-list-product-detail-3" >{{ type }}</ion-item>
+            <ion-item id="page-list-product-detail-4" >{{ quantity }}</ion-item>
+            <ion-item id="page-list-product-detail-4" >{{ price }}</ion-item>
         </ion-list>
 
     	<button class="button button-block button-positive" href="#/edit-product/" >Editar</button>
+
+        <button class="button button-block button-positive" ng-click="deleteProduct()" >Eliminar</button>
     </ion-content>
 </ion-view>
