@@ -45,7 +45,7 @@ function ($scope, $stateParams, productService, $cordovaDialogs , $state) {
          if(data.$status == 201 || data.$status == 200){
             $cordovaDialogs.alert('Bienvenido ' + data.firstname , '¡Hola! ' + data.firstname , 'OK');
             localStorage.setItem('email', data.email);
-            $state.go('product');
+            $state.go('menu.home');
          }else{
             $cordovaDialogs.alert('Algo salio mal ' + data.firstname , '¡Ups! ' + data.firstname , 'OK');
          }
@@ -55,10 +55,10 @@ function ($scope, $stateParams, productService, $cordovaDialogs , $state) {
 }])
    
 
-.controller('productCtrl', ['$scope', '$stateParams', 'productService', '$state',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('productCtrl', ['$scope', '$stateParams', 'productService', '$state', '$cordovaSQLite', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams, productService, $state) {
+function ($scope, $stateParams, productService, $state, $cordovaSQLite) {
 	$scope.logout = function(){
 		console.log("sdfasdf");
 		$state.go('logout');
@@ -69,6 +69,42 @@ function ($scope, $stateParams, productService, $state) {
 		$state.go('options');
 	} else {
 		productService.item_list.query(function(data){
+
+			console.log('Productos');
+			var db = $cordovaSQLite.openDB({ name: "app.db", location: 'default' });
+
+			db.transaction(function(tx) {
+				tx.executeSql('CREATE TABLE IF NOT EXISTS products (id, name, type, quantity, price, url)');
+			}, function(error) {
+				console.log('Transaction ERROR: ' + error.message);
+			}, function() {
+				console.log('Populated database OK');
+			});
+
+		    var query = "INSERT INTO products (id, name, type, quantity, price, url) VALUES (?,?,?,?,?,?)";
+
+			angular.forEach(data, function(product, index) {
+				db.transaction(function(tx) {
+					tx.executeSql('SELECT * from products where id = ?', [product.id], function(tx, rs) {
+						console.log(rs);
+					});
+				}, function(error) {
+					console.log('Transaction ERROR: ' + error.message);
+				}, function() {
+					console.log('Populated database OK');
+				});
+
+			    $cordovaSQLite.execute(db, query, product).then(function(res) {
+			      console.log("insertId: " + res.insertId);
+			    }, function (err) {
+			      console.error(err);
+			    });
+            });
+
+
+
+
+
 			$scope.list = data;
         	console.log($scope.list);
     	});
